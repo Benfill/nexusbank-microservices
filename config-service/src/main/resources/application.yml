@@ -8,5 +8,7 @@ spring:
       server:
         git:
           uri: 'https://github.com/Benfill/nexusbank-microservices'
+          username: ${GIT_USERNAME}
+          password: ${GIT_PASSWORD}
           default-label: main
         search-paths: configs

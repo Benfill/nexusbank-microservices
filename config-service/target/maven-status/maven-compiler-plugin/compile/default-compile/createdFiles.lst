@@ -1,1 +1,2 @@
 com\nexusbank\config\ConfigApplication.class
+com\nexusbank\config\EnvConfig.class
