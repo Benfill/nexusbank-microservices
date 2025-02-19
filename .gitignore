@@ -5,3 +5,4 @@ config-service/.env
 config-service/.project
 config-service/.classpath
 /config-service/target
+/config-service/target
