@@ -11,7 +11,7 @@ spring:
           username: ${GIT_USERNAME}
           password: ${GIT_PASSWORD}
           default-label: main
-        search-paths: configs		
+          search-paths: configs		
 eureka:
   client:
     serviceUrl:

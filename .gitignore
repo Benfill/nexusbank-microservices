@@ -1,3 +1,7 @@
 /config-service/target
 /config-service/target
 config-service/.env
+/config-service/.settings
+config-service/.project
+config-service/.classpath
+/config-service/target
