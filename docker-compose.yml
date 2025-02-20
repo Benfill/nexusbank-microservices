@@ -1,38 +1,42 @@
-version: "3.8"
+version: '3.8'
+
+networks:
+  nexusbank-network:
+    driver: bridge
 
 services:
   config-service:
-    build: ./config-service
+    build:
+      context: ./config-service
+      dockerfile: Dockerfile
     ports:
       - "8888:8888"
-    volumes:
-      - ./configs:/configs
-    environment:
-      - SPRING_CLOUD_CONFIG_SERVER_GIT_URI=file:///configs
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8888/actuator/health"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
     networks:
       - nexusbank-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8888/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
 
   discovery-service:
-    build: ./discovery-service
+    build:
+      context: ./discovery-service
+      dockerfile: Dockerfile
     ports:
       - "8761:8761"
+    networks:
+      - nexusbank-network
     depends_on:
       config-service:
         condition: service_healthy
-    environment:
-      - SPRING_CLOUD_CONFIG_URI=http://config-service:8888
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8761/actuator/health"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-    networks:
-      - nexusbank-network
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
 
   gateway-service:
     build: ./gateway-service
