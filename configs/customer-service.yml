@@ -4,4 +4,10 @@ spring:
   application:
     name: customer-service
   datasource:
-    url: jdbc:h2:mem:customer-db
+    url: jdbc:postgresql://postgres:5432/customer-service
+    username: postgres
+    password: password
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
