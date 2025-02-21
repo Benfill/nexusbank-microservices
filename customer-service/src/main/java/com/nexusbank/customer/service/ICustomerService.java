@@ -20,4 +20,5 @@ public interface ICustomerService {
     GlobalResponse delete(Long id);
 
     DtoResponse searchById(Long id);
+
 }
