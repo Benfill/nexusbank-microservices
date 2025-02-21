@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.nexusbank.account.dto.DtoRequest;
+import com.nexusbank.account.repository.AccountRepository;
 import com.nexusbank.account.service.IAccountService;
 
 @RestController
@@ -23,6 +24,9 @@ public class AccountController {
 
     @Autowired
     private IAccountService service;
+
+    @Autowired
+    private AccountRepository repository;
 
     @GetMapping
     public ResponseEntity<?> index(@RequestParam(defaultValue = "1", name = "page") Integer page,
@@ -48,5 +52,10 @@ public class AccountController {
     @DeleteMapping("{id}")
     public ResponseEntity<?> store(@PathVariable Long id) {
 	return ResponseEntity.ok(service.delete(id));
+    }
+
+    @GetMapping("/customer/{id}")
+    public ResponseEntity<?> getCustomerAccounts(@PathVariable Long id) {
+	return ResponseEntity.ok(repository.findByCustomerId(id));
     }
 }

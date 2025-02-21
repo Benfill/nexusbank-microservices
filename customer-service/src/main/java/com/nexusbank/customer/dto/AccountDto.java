@@ -1,21 +1,16 @@
 package com.nexusbank.customer.dto;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
-import lombok.Builder;
 import lombok.Data;
 
 @Data
-@Builder
-public class DtoResponse {
+public class AccountDto {
     private Long id;
 
-    private String name;
+    private Double balance;
 
-    private String email;
-
-    private List<AccountDto> accounts;
+    private String type;
 
     private LocalDateTime createdAt;
 
