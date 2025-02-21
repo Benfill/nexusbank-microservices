@@ -2,6 +2,7 @@ package com.nexusbank.customer.service;
 
 import java.util.List;
 
+import com.nexusbank.customer.dto.AccountDto;
 import com.nexusbank.customer.dto.DtoRequest;
 import com.nexusbank.customer.dto.DtoResponse;
 import com.nexusbank.customer.dto.GlobalResponse;
@@ -20,5 +21,7 @@ public interface ICustomerService {
     GlobalResponse delete(Long id);
 
     DtoResponse searchById(Long id);
+
+    List<AccountDto> getAccounts(Long customerId);
 
 }
