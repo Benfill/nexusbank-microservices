@@ -23,4 +23,6 @@ public interface IAccountService {
     DtoResponse display(Long id);
 
     CustomerDto getCustomer(Long id);
+
+    GlobalResponse deleteCustomerAccounts(Long id);
 }

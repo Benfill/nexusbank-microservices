@@ -83,6 +83,8 @@ public class CustomerService implements ICustomerService {
 
 	repository.delete(customer);
 
+	deleteAccounts(id);
+
 	return GlobalResponse.builder().message("Customer deleted successfully").build();
     }
 
@@ -122,6 +124,31 @@ public class CustomerService implements ICustomerService {
 	} catch (Exception e) {
 	    // Handle other exceptions (e.g., network errors)
 	    throw new RuntimeException("Error while fetching account data: " + e.getMessage());
+	}
+    }
+
+    @Override
+    public GlobalResponse deleteAccounts(Long id) {
+	String url = "http://account-service/api/accounts/customer/" + id;
+
+	try {
+	    ResponseEntity<GlobalResponse> response = restTemplate.exchange(url, HttpMethod.DELETE, null,
+		    new ParameterizedTypeReference<GlobalResponse>() {
+		    });
+
+	    if (response.getStatusCode() == HttpStatus.OK) {
+		return response.getBody();
+	    } else {
+		throw new ResourceNotFoundException("Account not found with this id: " + id);
+	    }
+	} catch (HttpClientErrorException e) {
+	    if (e.getStatusCode() == HttpStatus.NOT_FOUND) {
+		throw new ResourceNotFoundException("Account not found with this id: " + id);
+	    } else {
+		throw new RuntimeException("Error while deleting account data: " + e.getMessage());
+	    }
+	} catch (Exception e) {
+	    throw new RuntimeException("Error while deleting account data: " + e.getMessage());
 	}
     }
 

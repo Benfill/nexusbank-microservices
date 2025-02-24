@@ -58,4 +58,9 @@ public class AccountController {
     public ResponseEntity<?> getCustomerAccounts(@PathVariable Long id) {
 	return ResponseEntity.ok(repository.findByCustomerId(id));
     }
+
+    @DeleteMapping("/customer/{id}")
+    public ResponseEntity<?> deleteCustomerAccounts(@PathVariable Long id) {
+	return ResponseEntity.ok(service.deleteCustomerAccounts(id));
+    }
 }
