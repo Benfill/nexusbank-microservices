@@ -37,7 +37,7 @@ const HomePage: React.FC = () => {
       // Handle any errors that occur during deletion
       console.error("Failed to delete customer:", error);
       setIsShowen(true);
-      setMessage("Failed to delete customer:" + error);
+      setMessage(error!.response.data.message);
       setSeverity("error");
     } finally {
       setTimeout(() => {
@@ -58,7 +58,7 @@ const HomePage: React.FC = () => {
       // Handle any errors that occur during deletion
       console.error("Failed to delete account:", error);
       setIsShowen(true);
-      setMessage("Failed to delete account:" + error);
+      setMessage(error!.response.data.message);
       setSeverity("error");
     } finally {
       setTimeout(() => {
@@ -141,9 +141,9 @@ const HomePage: React.FC = () => {
   ];
 
   return (
-    <div className="px-40 py-10 flex flex-col gap-10">
-      <h1 className="text-center">Dashboard</h1>
+    <div className="px-40 py-10 flex flex-col gap-4">
       {isShown && <Alert severity={severity}> {message && message} </Alert>}
+      <h1 className="text-center font-extrabold text-xl">Dashboard</h1>
 
       <div>
         <h2>Customers</h2>
