@@ -24,4 +24,6 @@ public interface ICustomerService {
 
     List<AccountDto> getAccounts(Long customerId);
 
+    public GlobalResponse deleteAccounts(Long id);
+
 }

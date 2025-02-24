@@ -158,4 +158,11 @@ public class AccountService implements IAccountService {
 	}
     }
 
+    @Override
+    public GlobalResponse deleteCustomerAccounts(Long id) {
+	List<Account> accounts = repository.findByCustomerId(id);
+	accounts.forEach(account -> repository.delete(account));
+	return GlobalResponse.builder().message("accounts deleted successfully").build();
+    }
+
 }
