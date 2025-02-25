@@ -1,4 +1,5 @@
 # NexusBank Microservices
+![NexusBank-02-25-2025_09_18_AM](https://github.com/user-attachments/assets/35ec886c-9e07-44b5-971c-f956101084f7)
 
 NexusBank is a modern banking application built with a microservices architecture. The project includes both backend microservices and a React frontend for a complete banking system solution.
 
