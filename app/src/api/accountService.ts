@@ -5,7 +5,7 @@ import Account from '../types/accountTypes';
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 export const getAccounts = async () => {
-  const response = await axios.get(`${API_BASE_URL}/accounts`);
+  const response = await axios.get(`${API_BASE_URL}/accounts?size=100`);
   return response.data;
 };
 

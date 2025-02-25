@@ -28,7 +28,7 @@ const CustomerPage = () => {
         setMessage("");
         setSeverity(undefined);
         navigate("/");
-      }, 3000);
+      }, 2000);
     } catch (error) {
       console.error("Failed to create account: ", error);
       setIsShowen(true);

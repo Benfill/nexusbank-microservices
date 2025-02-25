@@ -5,7 +5,7 @@ import Customer from '../types/customerTypes';
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 export const getCustomers = async () => {
-  const response = await axios.get(`${API_BASE_URL}/customers`);
+  const response = await axios.get(`${API_BASE_URL}/customers?size=100`);
   return response.data;
 };
 

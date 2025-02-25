@@ -65,7 +65,7 @@ const AccountPage = () => {
         setMessage("");
         setSeverity(undefined);
         navigate("/");
-      }, 5000);
+      }, 2000);
     } catch (error) {
       // Handle any errors that occur during deletion
       console.error("Failed to create account: ", error);
