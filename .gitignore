@@ -6,3 +6,4 @@ config-service/.project
 config-service/.classpath
 /config-service/target
 /config-service/target
+backend/config-service/.env
