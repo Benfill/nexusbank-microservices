@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import Form, { FormField } from "../components/Form";
+import Form from "../components/Form";
 import { useNavigate } from "react-router-dom";
 import { Alert } from "@mui/material";
 import { createCustomer } from "../api/customerService";
+import { FormField } from "../types/formTypes";
 
 const CustomerPage = () => {
   let navigate = useNavigate();
@@ -15,7 +16,7 @@ const CustomerPage = () => {
     { name: "email", label: "Email", type: "email" },
   ];
 
-  const handleSubmit = async (data: Record<string, string>) => {
+  const handleSubmit = async (data: any) => {
     console.log("Form Data:", data);
     try {
       await createCustomer(data);
@@ -29,7 +30,7 @@ const CustomerPage = () => {
         setSeverity(undefined);
         navigate("/");
       }, 2000);
-    } catch (error) {
+    } catch (error: any) {
       console.error("Failed to create account: ", error);
       setIsShowen(true);
       setMessage(error!.response!.data!.message!);

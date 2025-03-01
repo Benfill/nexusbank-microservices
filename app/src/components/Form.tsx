@@ -6,24 +6,8 @@ import {
   MenuItem,
   TextField,
   Button,
-  Input,
 } from "@mui/material";
-import DoubleInput from "./DoubleInput";
-
-// Define the type for a form field
-export type FormField = {
-  name: string;
-  label: string;
-  type: "text" | "email" | "select" | "float"; // Add more types if needed
-  options?: { value: string | number; label: string }[]; // Only for select fields
-};
-
-// Define the props for the Form component
-type FormProps = {
-  fields: FormField[];
-  title: string;
-  onSubmit: (data: Record<string, string>) => void;
-};
+import { FormProps } from "../types/formTypes";
 
 const Form: React.FC<FormProps> = ({ fields, title, onSubmit }) => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
