@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import Form, { FormField } from "../components/Form";
+import Form from "../components/Form";
 import { getCustomers } from "../api/customerService";
 import { Alert } from "@mui/material";
-import Customer from "../types/customerTypes";
 import { createAccount } from "../api/accountService";
 import { useNavigate } from "react-router-dom";
+import Account from "../types/accountTypes";
+import { FormField } from "../types/formTypes";
+import { getOptions } from "../utils/getOptions";
 
 const AccountPage = () => {
   let navigate = useNavigate();
@@ -23,12 +25,16 @@ const AccountPage = () => {
   }, [isShown]);
 
   const fields: FormField[] = [
-    { name: "balance", label: "Balance", type: "float" },
+    {
+      name: "balance",
+      label: "Balance",
+      type: "float",
+    },
     {
       name: "customerId",
       label: "customer",
       type: "select",
-      options: getOptions(),
+      options: getOptions(customers),
     },
     {
       name: "type",
@@ -41,18 +47,7 @@ const AccountPage = () => {
     },
   ];
 
-  function getOptions(): { value: number; label: string }[] {
-    let array: { value: number; label: string }[] = [];
-
-    customers.map((customer: Customer) => {
-      array.push({ value: customer.id, label: customer.name });
-      return customer;
-    });
-
-    return array;
-  }
-
-  const handleSubmit = async (data: Record<string, string>) => {
+  const handleSubmit = async (data: Account) => {
     console.log("Form Data:", data);
     try {
       await createAccount(data);
@@ -66,11 +61,11 @@ const AccountPage = () => {
         setSeverity(undefined);
         navigate("/");
       }, 2000);
-    } catch (error) {
+    } catch (error: any) {
       // Handle any errors that occur during deletion
       console.error("Failed to create account: ", error);
       setIsShowen(true);
-      setMessage(error!.response!.data!.message!);
+      setMessage(error.response.data.message!);
       setSeverity("error");
     }
   };

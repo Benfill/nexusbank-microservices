@@ -1,5 +1,4 @@
 import axios from 'axios';
-import { CustomerFormData } from '../components/CustomerForm';
 import Customer from '../types/customerTypes';
 
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
@@ -9,8 +8,13 @@ export const getCustomers = async () => {
   return response.data;
 };
 
-export const createCustomer = async (customerData: CustomerFormData) => {
+export const createCustomer = async (customerData: Customer) => {
   const response = await axios.post(`${API_BASE_URL}/customers`, customerData);
+  return response.data;
+};
+
+export const updateCustomer = async (id:number, customerData: Customer) => {
+  const response = await axios.put(`${API_BASE_URL}/customers/${id}`, customerData);
   return response.data;
 };
 

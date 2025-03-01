@@ -1,34 +1,6 @@
 // GenericTable.tsx
 import React from "react";
-
-type ColumnType = "text" | "status" | "actions" | "image" | "boolean" | "date";
-
-export interface Column {
-  key: string;
-  label: string;
-  type?: ColumnType;
-}
-
-export interface GenericTableProps<T> {
-  columns: Column[];
-  data: T[];
-  onEdit?: (item: T) => void;
-  onDelete?: (item: T) => void;
-}
-
-// Helper type to ensure nested object access with depth limit
-// type NestedKeyOf<ObjectType extends object, Depth extends number = 3> = [
-//   Depth,
-// ] extends [never]
-//   ? never
-//   : {
-//       [Key in keyof ObjectType &
-//         (string | number)]: ObjectType[Key] extends object
-//         ?
-//             | Key
-//             | `${Key & string}.${NestedKeyOf<ObjectType[Key], Depth extends 0 ? never : [-1, 0, 1][Depth]> & string}`
-//         : Key;
-//     }[keyof ObjectType & (string | number)];
+import { Column, GenericTableProps } from "../types/columns";
 
 const Table = <T extends { id?: string | number }>({
   columns,
