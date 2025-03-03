@@ -5,6 +5,7 @@ NexusBank is a modern banking application built with a microservices architectur
 
 ## Table of Contents
 - [Overview](#overview)
+- [Links](#links)
 - [Project Architecture](#project-architecture)
 - [Microservices](#microservices)
 - [Frontend](#frontend)
@@ -16,6 +17,10 @@ NexusBank is a modern banking application built with a microservices architectur
 ## Overview
 
 NexusBank modernizes banking infrastructure with a microservices-based backend and a React frontend. The system manages customers and their banking accounts (current and savings) through REST APIs.
+
+## Links
+- [Jira](https://benfill.atlassian.net/jira/software/projects/NXBNK/boards/634?atlOrigin=eyJpIjoiNmU0MDA2MmY0NzI4NGMzYTk1ZWM4YjMyMTdiZGVhNTUiLCJwIjoiaiJ9)
+- [Uml](https://github.com/Benfill/nexusbank-microservices/tree/main/UML)
 
 ## Project Architecture
 
